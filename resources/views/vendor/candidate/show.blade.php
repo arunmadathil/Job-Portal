@@ -25,9 +25,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
-                                    <h2>Nicole Pearson</h2>
-                                    <p><strong>About: </strong> Web Designer / UI. </p>
-                                    <p><strong>Hobbies: </strong> Read, out with friends, listen to music, draw and learn new things. </p>
+                                    <h2>{{ $candidate->first_name." ".$candidate->last_name }}</h2>
+                                    <p>About:<strong>{{ $candidate->title }} </p>
+                                    
                                     <p><strong>Skills: </strong>
                                         @if(!$candidate->skills->isEmpty())
                                         @foreach ($candidate->skills as $skill)
@@ -54,11 +54,11 @@
                                <h3 class="name">Contact</h3>
 
                                <div class="stat-item">
-                                <span class="online-status status-available"><i class="fa fa-home" style="font-size:20px"></i> Available</span>
+                                <span class="online-status status-available"><i class="fa fa-home" style="font-size:20px"></i>Adress</span>
                                 <br>
-                                <span><i class="fa fa-phone-square" style="font-size:20px"></i> Projects</span> 
+                                <span><i class="fa fa-phone-square" style="font-size:20px"></i> {{ $candidate->mobile }}</span> 
                                 <br>
-                                <span><i class="fas fa-envelope" style="font-size:20px"></i></i> Projects</span> 
+                                <span><i class="fas fa-envelope" style="font-size:20px"></i></i> {{ $candidate->email }}</span> 
                             </div>
 
 
