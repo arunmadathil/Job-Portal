@@ -16,7 +16,7 @@ class CreateJobPostsTable extends Migration
          Schema::create('job_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description')->unique();
+            $table->string('description');
             $table->tinyInteger('experience')->default(0);
             $table->integer('country_id');
             $table->integer('state_id');

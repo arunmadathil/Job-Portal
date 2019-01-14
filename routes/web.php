@@ -12,16 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::prefix('vendor')->group(function () {
-	Route::Resource('/job-post','JobPostsController');
-  
-});
-Auth::routes();
+Route::group(['prefix'=>'/vendor', 'middleware'=>['auth']],function () {
+	Route::get('job-post/skills/{id}','Vendor\JobPostsController@skills')->name('job-post.skills');
+	Route::Resource('/job-post','Vendor\JobPostsController');
+	Route::post('/job-post/add-skills/{id}','Vendor\JobPostsController@addSkills')->name('job-post.add-skills');
+	Route::post('/job-post/add-candidate/{id}','Vendor\JobPostsController@addCandidate')->name('job-post.add-candidate');
 
-Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('candidate-info/skills/{id}','Vendor\CandidateController@skills')->name('candidate-info.skills');
+	Route::Resource('/candidate-info','Vendor\CandidateController');
+	Route::post('/candidate-info/add-skills/{id}','Vendor\CandidateController@addSkills')->name('candidate-info.add-skills');
+});

@@ -1,9 +1,12 @@
 @extends('layouts.app')
+@push('css')
 
+@endpush
+<style type="text/css"></style>
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ ($edit) ? 'Update Job' : 'Add Job'}}</div>
                 <div class="panel-body">
@@ -29,26 +32,27 @@
                             </select>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-left:0px;padding-right: 0px">
                             <label for="exampleFormControlSelect1">Location Hiring for</label>
 
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group col-md-4">
+
+                        <div class="col-md-12" style="padding-left:0px;padding-right: 0px">
+                            <div class="form-group col-md-4" style="padding-left:0px;padding-right: 5px">
                                 <select  class="form-control" name="country">
                                     @for($i = 1;$i<=5;$i++)
                                     <option @if($post->country_id == $i) selected @endif value="{{$i}}">Country{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" style="padding-left:0px;padding-right: 5px">
                                 <select  class="form-control" name="state">
                                      @for($i = 1;$i<=5;$i++)
                                     <option @if($post->state_id == $i) selected @endif value="{{$i}}">State{{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" style="padding-left:0px;padding-right: 0px">
                                 <select  class="form-control" name="city">
                                      @for($i = 1;$i<=5;$i++)
                                     <option @if($post->city== $i) selected @endif value="{{$i}}">City{{$i}}</option>
